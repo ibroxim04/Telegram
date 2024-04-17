@@ -9,10 +9,19 @@ import java.util.List;
 
 public class UserServiceImp implements UserService {
     private List<User> userList;
+    private static UserServiceImp userServiceImp;
 
-    public UserServiceImp() {
+    private UserServiceImp() {
         this.userList = new ArrayList<>();
         userList.add(new User("Admin", 18, "admin", "admin", Role.ADMIN));
+    }
+
+    public static UserServiceImp getInstance() {
+        if (userServiceImp == null) {
+            userServiceImp = new UserServiceImp();
+        }
+
+        return userServiceImp;
     }
 
     @Override

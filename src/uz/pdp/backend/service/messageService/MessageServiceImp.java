@@ -7,9 +7,18 @@ import java.util.List;
 
 public class MessageServiceImp implements MessageService {
     private List<Message> messageList;
+    private static MessageServiceImp messageServiceImp;
 
-    public MessageServiceImp() {
+    private MessageServiceImp() {
         this.messageList = new ArrayList<>();
+    }
+
+    public static MessageServiceImp getInstance() {
+        if (messageServiceImp == null) {
+            messageServiceImp = new MessageServiceImp();
+        }
+
+        return messageServiceImp;
     }
 
     @Override

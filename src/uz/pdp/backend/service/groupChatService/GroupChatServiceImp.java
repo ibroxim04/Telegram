@@ -7,9 +7,18 @@ import java.util.List;
 
 public class GroupChatServiceImp implements GroupChatService {
     private List<GroupChat> groupChats;
+    private static GroupChatServiceImp groupChatServiceImp;
 
-    public GroupChatServiceImp() {
+    private GroupChatServiceImp() {
         this.groupChats = new ArrayList<>();
+    }
+
+    public static GroupChatServiceImp getInstance() {
+        if (groupChatServiceImp == null) {
+            groupChatServiceImp = new GroupChatServiceImp();
+        }
+
+        return groupChatServiceImp;
     }
 
     @Override

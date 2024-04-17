@@ -7,9 +7,18 @@ import java.util.List;
 
 public class PrivateChatServiceImp implements PrivateChatService {
     private List<PrivateChat> privateChats;
+    private static PrivateChatServiceImp privateChatServiceImp;
 
-    public PrivateChatServiceImp() {
+    private PrivateChatServiceImp() {
         this.privateChats = new ArrayList<>();
+    }
+
+    public static PrivateChatServiceImp getInstance() {
+        if (privateChatServiceImp == null) {
+            privateChatServiceImp = new PrivateChatServiceImp();
+        }
+
+        return privateChatServiceImp;
     }
 
     @Override
