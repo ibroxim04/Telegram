@@ -2,9 +2,16 @@ package uz.pdp.backend.service.privateChatService;
 
 import uz.pdp.backend.models.PrivateChat;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PrivateChatServiceImp implements PrivateChatService {
+    private List<PrivateChat> privateChats;
+
+    public PrivateChatServiceImp() {
+        this.privateChats = new ArrayList<>();
+    }
+
     @Override
     public void create(PrivateChat privateChat) {
 

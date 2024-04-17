@@ -1,20 +1,20 @@
 package uz.pdp.backend.models;
 
-import uz.pdp.backend.enums.Status;
+import uz.pdp.backend.enums.Role;
 
 public class User extends BaseModel {
     private String name;
     private Integer age;
     private String userName;
     private String password;
-    private Status status;
+    private Role role;
 
-    public User(String name, Integer age, String userName, String password, Status status) {
+    public User(String name, Integer age, String userName, String password, Role role) {
         this.name = name;
         this.age = age;
         this.userName = userName;
         this.password = password;
-        this.status = status;
+        this.role = role;
     }
 
     public String getName() {
@@ -49,12 +49,12 @@ public class User extends BaseModel {
         this.password = password;
     }
 
-    public Status getStatus() {
-        return status;
+    public Role getStatus() {
+        return role;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setStatus(Role role) {
+        this.role = role;
     }
 
     @Override

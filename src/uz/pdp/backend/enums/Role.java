@@ -1,6 +1,6 @@
 package uz.pdp.backend.enums;
 
-public enum Status {
+public enum Role {
     USER,
     ADMIN;
 }

@@ -2,9 +2,16 @@ package uz.pdp.backend.service.groupChatService;
 
 import uz.pdp.backend.models.GroupChat;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GroupChatServiceImp implements GroupChatService {
+    private List<GroupChat> groupChats;
+
+    public GroupChatServiceImp() {
+        this.groupChats = new ArrayList<>();
+    }
+
     @Override
     public void create(GroupChat groupChat) {
 

@@ -2,9 +2,16 @@ package uz.pdp.backend.service.messageService;
 
 import uz.pdp.backend.models.Message;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class MessageServiceImp implements MessageService{
+public class MessageServiceImp implements MessageService {
+    private List<Message> messageList;
+
+    public MessageServiceImp() {
+        this.messageList = new ArrayList<>();
+    }
+
     @Override
     public boolean sendMessage(String message) {
         return false;
