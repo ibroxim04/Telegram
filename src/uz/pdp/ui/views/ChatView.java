@@ -46,7 +46,12 @@ public class ChatView {
         showChats();
         System.out.println("Choose chat to delete by ID: ");
         String chat = ScanUtil.strScanner.nextLine();
-        privateChatService.delete(chat);
+        PrivateChat delete = privateChatService.delete(chat);
+        if (delete != null) {
+            System.out.println("Deleted successfully!");
+        } else {
+            System.out.println("Not deleted, something went wrong!");
+        }
     }
 
     private static void openChat() {

@@ -24,14 +24,24 @@ public class UserServiceImp implements UserService {
         return userServiceImp;
     }
 
+    public List<User> getUserList() {
+        return userList;
+    }
+
     @Override
     public User login(LoginDto login) {
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).getUserName().equals(login.userName()) && userList.get(i).getPassword().equals(login.password())) {
+                return userList.get(i);
+            }
+        }
+
         return null;
     }
 
     @Override
     public void signUp(User user) {
-
+        userList.add(user);
     }
 
     @Override
@@ -41,12 +51,22 @@ public class UserServiceImp implements UserService {
 
     @Override
     public User get(String id) {
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).getId().equals(id)) {
+                return userList.get(i);
+            }
+        }
+
         return null;
     }
 
     @Override
-    public List<User> getList() {
-        return List.of();
+    public void getList() {
+        for (User user : userList) {
+            if (!user.getDeleted()) {
+                System.out.println(user);
+            }
+        }
     }
 
     @Override
@@ -55,7 +75,14 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public void delete(String id) {
-
+    public User delete(String id) {
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).getId().equals(id)) {
+                User temp = userList.get(i);
+                userList.get(i).setDeleted(true);
+                return temp;
+            }
+        }
+        return null;
     }
 }

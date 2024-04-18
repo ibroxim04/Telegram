@@ -23,17 +23,27 @@ public class PrivateChatServiceImp implements PrivateChatService {
 
     @Override
     public void create(PrivateChat privateChat) {
-
+        privateChats.add(privateChat);
     }
 
     @Override
     public PrivateChat get(String id) {
+        for (int i = 0; i < privateChats.size(); i++) {
+            if (privateChats.get(i).getId().equals(id)) {
+                return privateChats.get(i);
+            }
+        }
+
         return null;
     }
 
     @Override
-    public List<PrivateChat> getList() {
-        return List.of();
+    public void getList() {
+        for (PrivateChat privateChat : privateChats) {
+            if (!privateChat.getDeleted()) {
+                System.out.println(privateChat);
+            }
+        }
     }
 
     @Override
@@ -42,7 +52,14 @@ public class PrivateChatServiceImp implements PrivateChatService {
     }
 
     @Override
-    public void delete(String id) {
-
+    public PrivateChat delete(String id) {
+        for (int i = 0; i < privateChats.size(); i++) {
+            if (privateChats.get(i).getId().equals(id)) {
+                PrivateChat temp = privateChats.get(i);
+                privateChats.get(i).setDeleted(true);
+                return temp;
+            }
+        }
+        return null;
     }
 }

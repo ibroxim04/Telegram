@@ -1,5 +1,6 @@
 package uz.pdp.ui.views;
 
+import uz.pdp.backend.models.Message;
 import uz.pdp.backend.models.PrivateChat;
 import uz.pdp.backend.service.messageService.MessageService;
 import uz.pdp.backend.service.messageService.MessageServiceImp;
@@ -12,34 +13,38 @@ public class ChatMessageView {
 
     public static void chatMessageMenu(PrivateChat chat) {
         curChat = chat;
-        while (true) {
-            int menu = MenuUtils.menu(MenuUtils.MESSAGE);
-            switch (menu) {
-                case 1 ->{
-                    sendMessage();
-                }
-                case 2 ->{
-                    readMessages();
-                }
-                case 0 ->{
-                    curChat = null;
-                    return;
-                }
-                default -> {
-                    System.out.println("Wrong number!");
+        if (curChat != null) {
+            while (true) {
+                int menu = MenuUtils.menu(MenuUtils.MESSAGE);
+                switch (menu) {
+                    case 1 -> {
+                        sendMessage();
+                    }
+                    case 2 -> {
+                        readMessages();
+                    }
+                    case 0 -> {
+                        curChat = null;
+                        return;
+                    }
+                    default -> {
+                        System.out.println("Wrong number!");
+                    }
                 }
             }
+        } else {
+            System.out.println("Chat not found!");
         }
     }
 
     private static void readMessages() {
-        messageService.getList();
+        messageService.readMessages();
     }
 
     private static void sendMessage() {
         System.out.print("Enter the message: ");
         String message = ScanUtil.strScanner.nextLine();
-        messageService.sendMessage(message);
+        messageService.sendMessage(new Message(message, curChat.getUserId(), curChat.getId()));
         System.out.println("Sent!");
     }
 }

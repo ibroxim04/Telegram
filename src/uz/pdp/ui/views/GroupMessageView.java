@@ -1,6 +1,7 @@
 package uz.pdp.ui.views;
 
 import uz.pdp.backend.models.GroupChat;
+import uz.pdp.backend.models.Message;
 import uz.pdp.backend.service.messageService.MessageService;
 import uz.pdp.backend.service.messageService.MessageServiceImp;
 import uz.pdp.ui.utils.MenuUtils;
@@ -12,34 +13,38 @@ public class GroupMessageView {
 
     public static void groupMessageMenu(GroupChat chat) {
         curGroupChat = chat;
-        while (true) {
-            int menu = MenuUtils.menu(MenuUtils.MESSAGE);
-            switch (menu) {
-                case 1 -> {
-                    sendMessage();
-                }
-                case 2 -> {
-                    readMessages();
-                }
-                case 0 -> {
-                    curGroupChat = null;
-                    return;
-                }
-                default -> {
-                    System.out.println("Wrong number!");
+        if (curGroupChat != null) {
+            while (true) {
+                int menu = MenuUtils.menu(MenuUtils.MESSAGE);
+                switch (menu) {
+                    case 1 -> {
+                        sendMessage();
+                    }
+                    case 2 -> {
+                        readMessages();
+                    }
+                    case 0 -> {
+                        curGroupChat = null;
+                        return;
+                    }
+                    default -> {
+                        System.out.println("Wrong number!");
+                    }
                 }
             }
+        } else {
+            System.out.println("Chat not found!");
         }
     }
 
     private static void sendMessage() {
         System.out.print("Enter the message: ");
         String message = ScanUtil.strScanner.nextLine();
-        messageService.sendMessage(message);
+        messageService.sendMessage(new Message(message, curGroupChat.getUserId(), curGroupChat.getId()));
         System.out.println("Sent!");
     }
 
     private static void readMessages() {
-        messageService.getList();
+        messageService.readMessages();
     }
 }

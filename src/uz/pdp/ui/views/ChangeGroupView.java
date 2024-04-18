@@ -39,13 +39,23 @@ public class ChangeGroupView {
         groupChatService.getList();
         System.out.print("Enter the user you want to delete by ID: ");
         String id = ScanUtil.strScanner.nextLine();
-        groupChatService.deleteUser(id);
+        User user = groupChatService.deleteUser(id);
+        if (user != null) {
+            System.out.println("User deleted successfully!");
+        } else {
+            System.out.println("User not found! \nTry again!");
+        }
     }
 
     private static void addUser() {
         userService.getList();
         System.out.println("Enter the user you want to add by ID: ");
         String id = ScanUtil.strScanner.nextLine();
-        groupChatService.addUser(id);
+        User user = groupChatService.addUser(id);
+        if (user != null) {
+            System.out.println("User added successfully!");
+        } else {
+            System.out.println("User not found!");
+        }
     }
 }

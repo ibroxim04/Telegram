@@ -53,7 +53,12 @@ public class GroupView {
         showGroups();
         System.out.print("Enter the ID of the group you want to delete: ");
         String id = ScanUtil.strScanner.nextLine();
-        groupChatService.delete(id);
+        GroupChat delete = groupChatService.delete(id);
+        if (delete != null) {
+            System.out.println("Deleted successfully!");
+        } else {
+            System.out.println("Not deleted, something went wrong!");
+        }
     }
 
     private static void openGroup() {
@@ -71,8 +76,5 @@ public class GroupView {
     private static void createGroup() {
         System.out.print("Enter the title of the group: ");
         String title = ScanUtil.strScanner.nextLine();
-        System.out.println("Enter the number of users: ");
-        int numberOfUsers = ScanUtil.intScanner.nextInt();
-        groupChatService.createGroup(title,numberOfUsers);
     }
 }

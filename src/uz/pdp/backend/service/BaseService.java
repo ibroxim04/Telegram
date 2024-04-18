@@ -9,9 +9,9 @@ public interface BaseService<M extends BaseModel> {
 
     M get(String id);
 
-    List<M> getList();
+    void getList();
 
     void update(M newM);
 
-    void delete(String id);
+    M delete(String id);
 }
