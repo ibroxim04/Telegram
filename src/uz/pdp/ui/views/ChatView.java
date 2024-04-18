@@ -69,7 +69,7 @@ public class ChatView {
     private static void createChat() {
         System.out.print("Enter the name of the chat: ");
         String title = ScanUtil.strScanner.nextLine();
-        userService.getList();
+        userService.showUsers(curUser);
         System.out.print("Which user do you want to write? Enter ID: ");
         String userId = ScanUtil.strScanner.nextLine();
         privateChatService.create(new PrivateChat(title, userId));

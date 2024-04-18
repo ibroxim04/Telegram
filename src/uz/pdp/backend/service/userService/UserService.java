@@ -8,4 +8,5 @@ public interface UserService extends BaseService<User> {
     User login(LoginDto login);
 
     void signUp(User user);
+    void showUsers(User user);
 }

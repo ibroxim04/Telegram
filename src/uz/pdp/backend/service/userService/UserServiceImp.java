@@ -45,6 +45,15 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    public void showUsers(User user) {
+        for (User temp : userList) {
+            if (!temp.getDeleted() && !temp.equals(user)) {
+                System.out.println(temp);
+            }
+        }
+    }
+
+    @Override
     public void create(User user) {
 
     }
