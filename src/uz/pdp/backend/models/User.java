@@ -59,6 +59,6 @@ public class User extends BaseModel {
 
     @Override
     public String toString() {
-        return userName;
+        return userName + " " + getId();
     }
 }

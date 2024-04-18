@@ -7,21 +7,29 @@ import uz.pdp.backend.service.userService.UserService;
 import uz.pdp.backend.service.userService.UserServiceImp;
 import uz.pdp.ui.utils.ScanUtil;
 
+import java.util.Scanner;
+
 public class LoginView {
     private static UserService userService = UserServiceImp.getInstance();
 
     public static User login() {
         System.out.println("Enter login info:");
-        String username = ScanUtil.scanString("Username: ");
-        String password = ScanUtil.scanString("Password: ");
+        System.out.print("Username: ");
+        String username = ScanUtil.strScanner.nextLine();
+        System.out.print("Password: ");
+        String password = ScanUtil.strScanner.nextLine();
         return userService.login(new LoginDto(username, password));
     }
 
     public static void signUp() {
-        String name = ScanUtil.scanString("Enter your name: ");
-        Integer age = ScanUtil.scanInt("Enter your age: ");
-        String username = ScanUtil.scanString("Enter your username: ");
-        String password = ScanUtil.scanString("Enter your password: ");
+        System.out.println("Enter your name: ");
+        String name = ScanUtil.strScanner.nextLine();
+        System.out.println("Enter your age: ");
+        Integer age = ScanUtil.intScanner.nextInt();
+        System.out.println("Enter your username: ");
+        String username = ScanUtil.strScanner.nextLine();
+        System.out.println("Enter your password: ");
+        String password = ScanUtil.strScanner.nextLine();
         userService.signUp(new User(name,age,username,password, Role.USER));
         System.out.println("Signed up successfully!");
     }

@@ -37,6 +37,6 @@ public class GroupChat extends BaseModel{
 
     @Override
     public String toString() {
-        return title;
+        return title + " " + getId();
     }
 }

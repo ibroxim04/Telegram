@@ -37,6 +37,6 @@ public class Message extends BaseModel {
 
     @Override
     public String toString() {
-        return  content;
+        return  userId + " ---> " + content;
     }
 }
