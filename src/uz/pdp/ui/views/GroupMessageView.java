@@ -37,14 +37,14 @@ public class GroupMessageView {
         }
     }
 
+    private static void readMessages() {
+        messageService.readMessages();
+    }
+
     private static void sendMessage() {
         System.out.print("Enter the message: ");
         String message = ScanUtil.strScanner.nextLine();
-        messageService.sendMessage(new Message(message, curGroupChat.getUserId(), curGroupChat.getId()));
+        messageService.sendMessage(new Message(message, curGroupChat.getId(), curGroupChat.getId()));
         System.out.println("Sent!");
-    }
-
-    private static void readMessages() {
-        messageService.readMessages();
     }
 }

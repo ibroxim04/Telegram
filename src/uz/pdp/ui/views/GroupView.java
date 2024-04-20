@@ -9,6 +9,8 @@ import uz.pdp.backend.service.userService.UserServiceImp;
 import uz.pdp.ui.utils.MenuUtils;
 import uz.pdp.ui.utils.ScanUtil;
 
+import java.sql.SQLOutput;
+
 public class GroupView {
     private static User curUser;
     private static GroupChatService groupChatService = GroupChatServiceImp.getInstance();
@@ -76,5 +78,8 @@ public class GroupView {
     private static void createGroup() {
         System.out.print("Enter the title of the group: ");
         String title = ScanUtil.strScanner.nextLine();
+        System.out.print("Enter the number of users in the group: ");
+        int number = ScanUtil.intScanner.nextInt();
+        groupChatService.createGroup(title,number);
     }
 }

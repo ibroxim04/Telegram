@@ -54,6 +54,13 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    public void showUsers() {
+        for (User temp : userList) {
+            System.out.println(temp);
+        }
+    }
+
+    @Override
     public void create(User user) {
 
     }
