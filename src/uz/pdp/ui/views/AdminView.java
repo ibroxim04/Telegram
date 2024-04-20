@@ -8,7 +8,7 @@ public class AdminView {
     public static void profile(User admin) {
         curAdmin = admin;
         while (true) {
-            ///adminMenu
+            //adminMenu
         }
     }
 }

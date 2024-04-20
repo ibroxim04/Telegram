@@ -10,7 +10,6 @@ public interface MenuUtils {
 
     static int menu(String menu) {
         System.out.println(menu);
-        System.out.print("Choose: ");
-        return ScanUtil.intScanner.nextInt();
+         return ScanUtil.intScanner("Choose:");
     }
 }

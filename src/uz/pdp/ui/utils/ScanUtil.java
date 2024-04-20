@@ -3,6 +3,15 @@ package uz.pdp.ui.utils;
 import java.util.Scanner;
 
 public interface ScanUtil {
-    Scanner intScanner = new Scanner(System.in);
-    Scanner strScanner = new Scanner(System.in);
+    Scanner scannerStr = new Scanner(System.in);
+    Scanner scannerInt = new Scanner(System.in);
+      static String strScanner(String hint) {
+        System.out.print(hint);
+        return scannerStr.nextLine();
+     }
+
+      static Integer intScanner(String hint) {
+        System.out.print(hint);
+        return scannerInt.nextInt();
+     }
 }

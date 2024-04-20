@@ -44,8 +44,7 @@ public class ChatView {
 
     private static void deleteChat() {
         showChats();
-        System.out.println("Choose chat to delete by ID: ");
-        String chat = ScanUtil.strScanner.nextLine();
+        String chat = ScanUtil.strScanner("Choose chat to delete by ID: ");
         PrivateChat delete = privateChatService.delete(chat);
         if (delete != null) {
             System.out.println("Deleted successfully!");
@@ -56,8 +55,7 @@ public class ChatView {
 
     private static void openChat() {
         showChats();
-        System.out.println("Choose the chat by ID: ");
-        String chat = ScanUtil.strScanner.nextLine();
+        String chat = ScanUtil.strScanner("Choose the chat by ID: ");
         PrivateChat privateChat = privateChatService.get(chat);
         ChatMessageView.chatMessageMenu(privateChat);
     }
@@ -67,11 +65,9 @@ public class ChatView {
     }
 
     private static void createChat() {
-        System.out.print("Enter the name of the chat: ");
-        String title = ScanUtil.strScanner.nextLine();
+        String title = ScanUtil.strScanner("Enter the name of the chat: ");
         userService.showUsers(curUser);
-        System.out.print("Which user do you want to write? Enter ID: ");
-        String userId = ScanUtil.strScanner.nextLine();
+        String userId = ScanUtil.strScanner("Which user do you want to write? Enter ID: ");
         privateChatService.create(new PrivateChat(title, userId));
     }
 }

@@ -42,8 +42,7 @@ public class ChatMessageView {
     }
 
     private static void sendMessage() {
-        System.out.print("Enter the message: ");
-        String message = ScanUtil.strScanner.nextLine();
+        String message = ScanUtil.strScanner("Enter the message: ");
         messageService.sendMessage(new Message(message, curChat.getUserId(), curChat.getId()));
         System.out.println("Sent!");
     }
