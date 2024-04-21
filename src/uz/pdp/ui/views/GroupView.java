@@ -50,6 +50,7 @@ public class GroupView {
     }
 
     private static void deleteGroup() {
+
         showGroups();
         String id = ScanUtil.strScanner("Enter the ID of the group you want to delete: ");
         GroupChat delete = groupChatService.delete(id);
