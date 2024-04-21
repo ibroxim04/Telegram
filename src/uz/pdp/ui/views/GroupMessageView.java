@@ -39,7 +39,7 @@ public class GroupMessageView {
 
     private static void sendMessage() {
         String message = ScanUtil.strScanner("Enter the message: ");
-        messageService.sendMessage(new Message(message, curGroupChat.getUserId(), curGroupChat.getId()));
+        messageService.sendMessage(new Message(message, curGroupChat.getId(), curGroupChat.getId()));
         System.out.println("Sent!");
     }
 

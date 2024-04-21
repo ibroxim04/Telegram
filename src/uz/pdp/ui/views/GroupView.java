@@ -51,7 +51,8 @@ public class GroupView {
 
     private static void deleteGroup() {
         showGroups();
-        String id = ScanUtil.strScanner("Enter the ID of the group you want to delete: ");
+        System.out.print("Enter the ID of the group you want to delete: ");
+        String id = ScanUtil.strScanner.nextLine();
         GroupChat delete = groupChatService.delete(id);
         if (delete != null) {
             System.out.println("Deleted successfully!");
@@ -62,7 +63,8 @@ public class GroupView {
 
     private static void openGroup() {
         showGroups();
-        String id = ScanUtil.strScanner("Enter the ID of the group: ");
+        System.out.print("Enter the ID of the group: ");
+        String id = ScanUtil.strScanner.nextLine();
         GroupChat groupChat = groupChatService.get(id);
         GroupMessageView.groupMessageMenu(groupChat);
     }
@@ -72,6 +74,7 @@ public class GroupView {
     }
 
     private static void createGroup() {
-        String title = ScanUtil.strScanner("Enter the title of the group: ");
+        System.out.print("Enter the title of the group: ");
+        String title = ScanUtil.strScanner.nextLine();
     }
 }

@@ -72,7 +72,20 @@ public class GroupChatServiceImp implements GroupChatService {
 
     @Override
     public void createGroup(String title, int numberOfUsers) {
-        ///problematic!!!
+        userService.showUsers();
+        for (int i = 0; i < numberOfUsers; i++) {
+            System.out.println("Enter the ID of the user you want to add: ");
+            String temp = ScanUtil.strScanner.nextLine();
+            for (int j = 0; j < userServiceImp.getUserList().size(); j++) {
+                if (userServiceImp.getUserList().get(j).getId().equals(temp)) {
+                    usersInGroup.add(userServiceImp.getUserList().get(j));
+                    System.out.println("User added!");
+                    break;
+                }
+            }
+        }
+        groupChats.add(new GroupChat(title,(ArrayList<User>) usersInGroup,numberOfUsers));
+        System.out.println("Group was created!");
     }
 
     @Override
