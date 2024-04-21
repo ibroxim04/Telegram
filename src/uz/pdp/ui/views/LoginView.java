@@ -24,7 +24,7 @@ public class LoginView {
         Integer age = ScanUtil.intScanner("Enter your age:");
         String username = ScanUtil.strScanner("Enter your username: ");
         String password = ScanUtil.strScanner("Enter your password: ");
-        userService.signUp(new User(name,age,username,password, Role.USER));
+        userService.signUp(new User(name, age, username, password, Role.USER));
         System.out.println("Signed up successfully!");
     }
 }

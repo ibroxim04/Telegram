@@ -10,8 +10,12 @@ public interface ScanUtil {
         return scannerStr.nextLine();
      }
 
-      static Integer intScanner(String hint) {
-        System.out.print(hint);
+     static int intScanner(String message) {
+        System.out.print(message);
+        while (!scannerInt.hasNextInt()) {
+            System.out.print("\u001B[31m\t Invalid format! \n Please enter an integer\u001B[0m: ");
+            scannerInt.next();
+        }
         return scannerInt.nextInt();
-     }
+    }
 }
