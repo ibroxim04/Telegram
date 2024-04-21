@@ -73,9 +73,8 @@ public class GroupView {
     }
 
     private static void createGroup() {
-
         String title = ScanUtil.strScanner("Enter the title of the group: ");
-        int number = ScanUtil.intScanner(" Enter children numbers in group");
+        int number = ScanUtil.intScanner("Enter children numbers in group : ");
         groupChatService.createGroup(title,number);
     }
 }

@@ -7,7 +7,9 @@ import uz.pdp.backend.service.userService.UserServiceImp;
 import uz.pdp.ui.utils.ScanUtil;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupChatServiceImp implements GroupChatService {
     private List<GroupChat> groupChats;
@@ -73,17 +75,30 @@ public class GroupChatServiceImp implements GroupChatService {
     @Override
     public void createGroup(String title, int numberOfUsers) {
         userService.showUsers();
+        Set<String> addedUserIds = new HashSet<>();
         for (int i = 0; i < numberOfUsers; i++) {
             String temp = ScanUtil.strScanner("Enter the ID of the user you want to add: ");
+            boolean userAdded = false;
             for (int j = 0; j < userServiceImp.getUserList().size(); j++) {
                 if (userServiceImp.getUserList().get(j).getId().equals(temp)) {
+                    if (addedUserIds.contains(temp)) {
+                        System.out.println("User with ID " + temp + " is already added to the group.");
+                        userAdded = true;
+                        i--;
+                        break;
+                    }
                     usersInGroup.add(userServiceImp.getUserList().get(j));
+                    addedUserIds.add(temp);
                     System.out.println("User added!");
+                    userAdded = true;
                     break;
                 }
             }
+            if (!userAdded) {
+                System.out.println("User with ID " + temp + " not found.");
+            }
         }
-        groupChats.add(new GroupChat(title,(ArrayList<User>) usersInGroup,numberOfUsers));
+        groupChats.add(new GroupChat(title, new ArrayList<>(usersInGroup), numberOfUsers)); // Grubu oluştururken kopya oluşturuyoruz
         System.out.println("Group was created!");
     }
 
