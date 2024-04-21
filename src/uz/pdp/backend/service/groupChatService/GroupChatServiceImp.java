@@ -74,8 +74,7 @@ public class GroupChatServiceImp implements GroupChatService {
     public void createGroup(String title, int numberOfUsers) {
         userService.showUsers();
         for (int i = 0; i < numberOfUsers; i++) {
-            System.out.println("Enter the ID of the user you want to add: ");
-            String temp = ScanUtil.strScanner.nextLine();
+            String temp = ScanUtil.strScanner("Enter the ID of the user you want to add: ");
             for (int j = 0; j < userServiceImp.getUserList().size(); j++) {
                 if (userServiceImp.getUserList().get(j).getId().equals(temp)) {
                     usersInGroup.add(userServiceImp.getUserList().get(j));
