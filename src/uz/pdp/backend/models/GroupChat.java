@@ -2,12 +2,12 @@ package uz.pdp.backend.models;
 
 public class GroupChat extends BaseModel{
     private String title;
-    private String userId;
+    private String ownerId;
     private Integer userNumber;
 
-    public GroupChat(String title, String userId, Integer userNumber) {
+    public GroupChat(String title, String ownerId, Integer userNumber) {
         this.title = title;
-        this.userId = userId;
+        this.ownerId = ownerId;
         this.userNumber = userNumber;
     }
 
@@ -19,12 +19,12 @@ public class GroupChat extends BaseModel{
         this.title = title;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getOwnerId() {
+        return ownerId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 
     public Integer getUserNumber() {
