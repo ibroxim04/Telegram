@@ -38,12 +38,8 @@ public class PrivateChatServiceImp implements PrivateChatService {
     }
 
     @Override
-    public void getList() {
-        for (PrivateChat privateChat : privateChats) {
-            if (!privateChat.getDeleted()) {
-                System.out.println(privateChat);
-            }
-        }
+    public List<PrivateChat> getList() {
+        return privateChats;
     }
 
     @Override
@@ -61,5 +57,14 @@ public class PrivateChatServiceImp implements PrivateChatService {
             }
         }
         return null;
+    }
+
+    @Override
+    public void showPrivateChats() {
+        for (PrivateChat privateChat : privateChats) {
+            if (!privateChat.getDeleted()) {
+                System.out.println(privateChat);
+            }
+        }
     }
 }

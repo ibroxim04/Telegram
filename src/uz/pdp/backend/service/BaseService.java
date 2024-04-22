@@ -9,7 +9,7 @@ public interface BaseService<M extends BaseModel> {
 
     M get(String id);
 
-    void getList();
+    List<M> getList();
 
     void update(M newM);
 

@@ -5,9 +5,10 @@ import uz.pdp.backend.models.User;
 import uz.pdp.backend.service.BaseService;
 
 public interface GroupChatService extends BaseService<GroupChat> {
-    void createGroup(String title, int numberOfUsers);
+    void createGroup();
 
     User addUser(String id);
 
     User deleteUser(String id);
+    void showGroupChats();
 }

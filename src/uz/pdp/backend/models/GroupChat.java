@@ -1,16 +1,13 @@
 package uz.pdp.backend.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class GroupChat extends BaseModel{
     private String title;
-    private List<User> userList;
+    private String userId;
     private Integer userNumber;
 
-    public GroupChat(String title, ArrayList<User> userList, Integer userNumber) {
+    public GroupChat(String title, String userId, Integer userNumber) {
         this.title = title;
-        this.userList = userList;
+        this.userId = userId;
         this.userNumber = userNumber;
     }
 
@@ -22,12 +19,12 @@ public class GroupChat extends BaseModel{
         this.title = title;
     }
 
-    public List<User> getUsers() {
-        return userList;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserList(ArrayList<User> userList) {
-        this.userList = userList;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public Integer getUserNumber() {

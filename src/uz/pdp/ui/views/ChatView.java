@@ -61,13 +61,23 @@ public class ChatView {
     }
 
     private static void showChats() {
-        privateChatService.getList();
+        for (PrivateChat privateChat : privateChatService.getList()) {
+            if (curUser.getId().equals(privateChat.getFromId()) || curUser.getId().equals(privateChat.getToId())) {
+                System.out.println(privateChat);
+            }
+        }
     }
 
     private static void createChat() {
-        String title = ScanUtil.strScanner("Enter the name of the chat: ");
-        userService.showUsers(curUser);
-        String userId = ScanUtil.strScanner("Which user do you want to write? Enter ID: ");
-        privateChatService.create(new PrivateChat(title, userId));
+        userService.showUsers();
+        String toId = ScanUtil.strScanner("Which user do you want to write? Enter ID: ");
+        User toUser = null;
+        for (User user : userService.getList()) {
+            if (user.getId().equals(toId)) {
+                toUser = user;
+                break;
+            }
+        }
+        privateChatService.create(new PrivateChat(toUser.getUserName(),curUser.getId(),toUser.getId()));
     }
 }

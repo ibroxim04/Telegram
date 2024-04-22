@@ -47,12 +47,8 @@ public class GroupChatServiceImp implements GroupChatService {
     }
 
     @Override
-    public void getList() {
-        for (GroupChat groupChat : groupChats) {
-            if (!groupChat.getDeleted()) {
-                System.out.println(groupChat);
-            }
-        }
+    public ArrayList<GroupChat> getList() {
+        return (ArrayList<GroupChat>) groupChats;
     }
 
     @Override
@@ -73,33 +69,7 @@ public class GroupChatServiceImp implements GroupChatService {
     }
 
     @Override
-    public void createGroup(String title, int numberOfUsers) {
-        userService.showUsers();
-        Set<String> addedUserIds = new HashSet<>();
-        for (int i = 0; i < numberOfUsers; i++) {
-            String temp = ScanUtil.strScanner("Enter the ID of the user you want to add: ");
-            boolean userAdded = false;
-            for (int j = 0; j < userServiceImp.getUserList().size(); j++) {
-                if (userServiceImp.getUserList().get(j).getId().equals(temp)) {
-                    if (addedUserIds.contains(temp)) {
-                        System.out.println("User with ID " + temp + " is already added to the group.");
-                        userAdded = true;
-                        i--;
-                        break;
-                    }
-                    usersInGroup.add(userServiceImp.getUserList().get(j));
-                    addedUserIds.add(temp);
-                    System.out.println("User added!");
-                    userAdded = true;
-                    break;
-                }
-            }
-            if (!userAdded) {
-                System.out.println("User with ID " + temp + " not found.");
-            }
-        }
-        groupChats.add(new GroupChat(title, new ArrayList<>(usersInGroup), numberOfUsers));
-        System.out.println("Group was created!");
+    public void createGroup() {
     }
 
     @Override
@@ -125,5 +95,14 @@ public class GroupChatServiceImp implements GroupChatService {
         }
 
         return null;
+    }
+
+    @Override
+    public void showGroupChats() {
+        for (GroupChat groupChat : groupChats) {
+            if (!groupChat.getDeleted()) {
+                System.out.println(groupChat);
+            }
+        }
     }
 }

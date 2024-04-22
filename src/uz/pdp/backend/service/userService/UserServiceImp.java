@@ -77,12 +77,8 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public void getList() {
-        for (User user : userList) {
-            if (!user.getDeleted()) {
-                System.out.println(user);
-            }
-        }
+    public List<User> getList() {
+        return userList;
     }
 
     @Override

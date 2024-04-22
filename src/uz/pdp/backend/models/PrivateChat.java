@@ -2,12 +2,22 @@ package uz.pdp.backend.models;
 
 public class PrivateChat extends BaseModel {
     private String title;
-    private String userId;
+    private String fromId;
+    private String toId;
     private final Integer userNumber = 2;
 
-    public PrivateChat(String title, String userId) {
+    public PrivateChat(String title, String fromId, String toId) {
         this.title = title;
-        this.userId = userId;
+        this.fromId = fromId;
+        this.toId = toId;
+    }
+
+    public String getToId() {
+        return toId;
+    }
+
+    public void setToId(String toId) {
+        this.toId = toId;
     }
 
     public String getTitle() {
@@ -18,12 +28,12 @@ public class PrivateChat extends BaseModel {
         this.title = title;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getFromId() {
+        return fromId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setFromId(String fromId) {
+        this.fromId = fromId;
     }
 
     public Integer getUserNumber() {

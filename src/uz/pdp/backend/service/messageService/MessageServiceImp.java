@@ -44,12 +44,8 @@ public class MessageServiceImp implements MessageService {
     }
 
     @Override
-    public void getList() {
-        for (Message message : messageList) {
-            if (!message.getDeleted()) {
-                System.out.println(message);
-            }
-        }
+    public List<Message> getList() {
+        return messageList;
     }
 
     @Override
