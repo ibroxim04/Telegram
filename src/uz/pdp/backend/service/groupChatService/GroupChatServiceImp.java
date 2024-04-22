@@ -98,7 +98,7 @@ public class GroupChatServiceImp implements GroupChatService {
                 System.out.println("User with ID " + temp + " not found.");
             }
         }
-        groupChats.add(new GroupChat(title, new ArrayList<>(usersInGroup), numberOfUsers)); // Grubu oluştururken kopya oluşturuyoruz
+        groupChats.add(new GroupChat(title, new ArrayList<>(usersInGroup), numberOfUsers));
         System.out.println("Group was created!");
     }
 
