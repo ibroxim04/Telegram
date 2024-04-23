@@ -28,7 +28,7 @@ public class GroupChatServiceImp implements GroupChatService {
 
     @Override
     public void create(GroupChat groupChat) {
-
+        groupChats.add(groupChat);
     }
 
     @Override
@@ -64,8 +64,9 @@ public class GroupChatServiceImp implements GroupChatService {
     }
 
     @Override
-    public void createGroup(String name, String ownerId, int count) {
-        groupChats.add(new GroupChat(name, ownerId, 1));
+    public String createGroup(GroupChat groupChat) {
+        groupChats.add(groupChat);
+        return groupChat.getId();
     }
 
     @Override

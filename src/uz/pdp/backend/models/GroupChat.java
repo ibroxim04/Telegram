@@ -3,12 +3,10 @@ package uz.pdp.backend.models;
 public class GroupChat extends BaseModel{
     private String title;
     private String ownerId;
-    private Integer userNumber;
 
-    public GroupChat(String title, String ownerId, Integer userNumber) {
+    public GroupChat(String title, String ownerId) {
         this.title = title;
         this.ownerId = ownerId;
-        this.userNumber = userNumber;
     }
 
     public String getTitle() {
@@ -25,14 +23,6 @@ public class GroupChat extends BaseModel{
 
     public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
-    }
-
-    public Integer getUserNumber() {
-        return userNumber;
-    }
-
-    public void setUserNumber(Integer userNumber) {
-        this.userNumber = userNumber;
     }
 
     @Override
